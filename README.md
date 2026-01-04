@@ -1,7 +1,7 @@
 <br/>
 <div align="center">
 <a href="https://github.com/user/repo">
-<img src=".readme-images/project-logo.png" alt="Logo" height="128px">
+<img src=".readme-images/project-logo.svg" alt="Logo" height="128px">
 </a>
 <h3 align="center">Repo Name</h3>
 <p align="center">
