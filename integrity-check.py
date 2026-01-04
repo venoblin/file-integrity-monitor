@@ -21,6 +21,8 @@ def check(path):
   
   for f in files:
     hash = subprocess.run(["md5sum", f], capture_output=True).stdout.splitlines()
+    db.execute(f"SELECT md5 FROM files WHERE md5={hash}")
+    db.fetchone()
 
 if __name__ == '__main__':
   path_arg = sys.argv[1]
