@@ -14,4 +14,6 @@ def check(path):
     print(hash)
 
 if __name__ == '__main__':
-  check(sys.argv[1])
+  path_arg = sys.argv[1]
+  
+  check(path_arg)
