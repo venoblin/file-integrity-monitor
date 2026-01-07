@@ -36,11 +36,10 @@ if __name__ == '__main__':
 
   if len(sys.argv) < 2:
     pwd = subprocess.run(["pwd"], capture_output=True, text=True).stdout
-    path_arg = "."
+    path_arg = pwd
   else:
     path_arg = sys.argv[1]
   
-  print(path_arg)
-  # check(path_arg)
+  check(path_arg)
 
   connection.close()
