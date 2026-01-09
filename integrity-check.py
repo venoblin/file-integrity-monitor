@@ -24,11 +24,15 @@ def check(path):
     output = subprocess.run(["md5sum", f], capture_output=True, text=True).stdout
     hash = output[:32]
 
-    res = db.execute("SELECT * FROM files WHERE md5=?", (hash,))
+    hash_res = db.execute("SELECT * FROM files WHERE md5=?", (hash,))
 
-    if res.fetchone() is None:
-      print(f"New file found: {f}")
-      db.execute("INSERT INTO files VALUES (?, ?, ?)", (f, hash, path))
+    if hash_res.fetchone() is None:
+      file_res = db.execute("SELECT * FROM files WHERE file_name=?", (f,))
+
+      if file_res.fetchone() is None:
+        print(f"New file found: {f}")
+        db.execute("INSERT INTO files VALUES (?, ?, ?)", (f, hash, path))
+
       connection.commit() 
 
 if __name__ == '__main__':
