@@ -36,7 +36,7 @@ def check(path):
       else:
         file_name, hash, file_path = file_res.fetchone()
         print(f"File modified: {hash} -> {raw_hash} | {f}")
-        baseline_input = input("Wish to create new baseline? (Y, n)")
+        baseline_input = input("Wish to create new baseline? (Y, n) ")
         match baseline_input.lower():
           case "n":
             return
