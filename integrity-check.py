@@ -10,7 +10,7 @@ import sqlite3
 connection = sqlite3.connect("fim.db")
 db = connection.cursor()
 
-db.execute("CREATE TABLE IF NOT EXISTS files(file_name, md5, file_path)")
+db.execute("CREATE TABLE IF NOT EXISTS files(file_name, hash, file_path)")
 
 def check(path):
   if not os.path.isdir(path):
@@ -21,25 +21,26 @@ def check(path):
   modified_files = []
   
   for f in files:
-    output = subprocess.run(["md5sum", f], capture_output=True, text=True).stdout
-    raw_hash = output[:32]
+    if not os.path.isdir(f"{path}/{f}"):
+      output = subprocess.run(["md5sum", f], capture_output=True, text=True).stdout
+      raw_hash = output[:32]
 
-    hash_res = db.execute("SELECT * FROM files WHERE md5=?", (raw_hash,))
+      hash_res = db.execute("SELECT * FROM files WHERE hash=?", (raw_hash,))
 
-    if hash_res.fetchone() is None:
-      file_res = db.execute("SELECT * FROM files WHERE file_name=?", (f,)).fetchone()
+      if hash_res.fetchone() is None:
+        file_res = db.execute("SELECT * FROM files WHERE file_name=?", (f,)).fetchone()
 
-      if file_res is None:
-        print(f"New file found: {raw_hash} | {f}")
-        db.execute("INSERT INTO files VALUES (?, ?, ?)", (f, raw_hash, path))
-        connection.commit() 
-      else:
-        file_name, hash, file_path = file_res
-        modified_files.append({
-          "raw_hash": raw_hash,
-          "hash": hash,
-          "file_name": f
-        })
+        if file_res is None:
+          print(f"New file found: {raw_hash} | {f}")
+          db.execute("INSERT INTO files VALUES (?, ?, ?)", (f, raw_hash, path))
+          connection.commit() 
+        else:
+          file_name, hash, file_path = file_res
+          modified_files.append({
+            "raw_hash": raw_hash,
+            "hash": hash,
+            "file_name": f
+          })
         
   if len(modified_files) > 0:
     for f in modified_files:
