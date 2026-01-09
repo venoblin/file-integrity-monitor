@@ -27,14 +27,14 @@ def check(path):
     hash_res = db.execute("SELECT * FROM files WHERE md5=?", (raw_hash,))
 
     if hash_res.fetchone() is None:
-      file_res = db.execute("SELECT * FROM files WHERE file_name=?", (f,))
+      file_res = db.execute("SELECT * FROM files WHERE file_name=?", (f,)).fetchone()
 
-      if file_res.fetchone() is None:
+      if file_res is None:
         print(f"New file found: {raw_hash} | {f}")
         db.execute("INSERT INTO files VALUES (?, ?, ?)", (f, raw_hash, path))
         connection.commit() 
       else:
-        file_name, hash, file_path = file_res.fetchone()
+        file_name, hash, file_path = file_res
         modified_files.append({
           "raw_hash": raw_hash,
           "hash": hash,
@@ -50,7 +50,8 @@ def check(path):
       case "n":
         return
       case "y" | "":
-        print("Do stuff here")
+        res = db.execute("UPDATE files SET hash=? where hash=?", (raw_hash, hash))
+        print(res.fetchone())
 
 if __name__ == '__main__':
   path_arg = None
