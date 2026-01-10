@@ -7,7 +7,7 @@ import sys
 import subprocess
 import sqlite3
 
-connection = sqlite3.connect("fim.db")
+connection = sqlite3.connect("fic.db")
 db = connection.cursor()
 
 db.execute("CREATE TABLE IF NOT EXISTS files(file_name, hash, file_path)")

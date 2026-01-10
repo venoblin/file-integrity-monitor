@@ -18,7 +18,7 @@ Table of Contents
 
 ## About The Project
 
-This File Integrity Monitor (FIM) automates the process of validating file integrity within a target directory. It functions by calculating the MD5 checksum of files and storing them in a persistent SQLite3 database.
+This File Integrity Checker automates the process of validating file integrity within a target directory. It functions by calculating the MD5 checksum of files and storing them in a persistent SQLite3 database.
 
 On subsequent scans, the tool compares the current file state against the stored baseline. If a discrepancy is found (indicating a file modification), the user is alerted and presented with the option to update the baseline, effectively "accepting" the new changes. This tool is designed to demonstrate core concepts of Blue Team defense, including integrity verification, baselining, and database interactions.
 
