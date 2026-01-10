@@ -27,6 +27,7 @@ On subsequent scans, the tool compares the current file state against the stored
 This project was built with the following technologies:
 
 - <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff" alt="Python" />
+- <img src="https://img.shields.io/badge/SQLite-%2307405e.svg?logo=sqlite&logoColor=white" alt="SQLite" />
 
 ## Usage
 
