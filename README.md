@@ -14,71 +14,19 @@ Table of Contents
 
 - [About The Project](#about-the-project)
   - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
 - [Usage](#usage)
 
 ## About The Project
 
-About the project, include images here too.
+This File Integrity Monitor (FIM) automates the process of validating file integrity within a target directory. It functions by calculating the MD5 checksum of files and storing them in a persistent SQLite3 database.
+
+On subsequent scans, the tool compares the current file state against the stored baseline. If a discrepancy is found (indicating a file modification), the user is alerted and presented with the option to update the baseline, effectively "accepting" the new changes. This tool is designed to demonstrate core concepts of Blue Team defense, including integrity verification, baselining, and database interactions.
 
 ### Built With
 
 This project was built with the following technologies:
 
 - <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff" alt="Python" />
-
-## Getting Started
-
-Instructions of setting up project on your local machine.
-
-### Prerequisites
-
-Describe prerequisites and how to complete them, this example we're installing nodemon. To install nodemon do the following:
-
-- Install Nodemon:
-  ```sh
-  npm install -g nodemon
-  ```
-  Make sure NPM is installed.
-- Verify installation:
-  ```sh
-  nodemon --version
-  ```
-
-### Installation
-
-1. **Clone the repository**
-
-   ```sh
-   git clone --recurse-submodules https://github.com/venoblin/scripts
-   ```
-
-2. **Create settings file (for [ezdownloadsorter](https://github.com/venoblin/download-file-sorter))**
-
-   ```sh
-   cd scripts
-   touch settings.json
-   ```
-
-3. **Modify `settings.json`**
-
-   ```json
-   {
-     "downloads": "/path/to/Downloads",
-     "destinations": {
-       ".file-extension": "/path/to/destination",
-       ".file-extension": "/path/to/destination",
-       ".file-extension": "/path/to/destination"
-     }
-   }
-   ```
-
-4. **Install scripts**
-   ```sh
-   ./install.sh
-   ```
 
 ## Usage
 
