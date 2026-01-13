@@ -59,15 +59,6 @@ def check(path):
 if __name__ == '__main__':
   path = os.path.abspath(f"{sys.argv[1]}")
 
-  # if len(sys.argv) < 2:
-  #   pwd = subprocess.run(["pwd"], capture_output=True, text=True).stdout
-  #   path_arg = pwd
-  # else:
-  #   path_arg = sys.argv[1]
-  
-  # try:
-  #   check(path_arg)
-  # except:
-  #   print("Exiting...")
+  check(path)
     
   connection.close()
