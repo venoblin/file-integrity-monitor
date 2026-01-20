@@ -55,17 +55,19 @@ def check_path(path):
           connection.commit()
           print(f"Baseline set: {f["raw_hash"]} | {f["file_name"]}")
 
-  def view_db():
-    all_items_res = db.execute("SELECT * FROM files").fetchall()
-    print(all_items_res)
+def view_db():
+  all_items_res = db.execute("SELECT * FROM files").fetchall()
+  for file_name, hash, file_path in all_items_res:
+    print(f"{hash} | {file_name}")
 
 if __name__ == '__main__':
-  if len(sys.argv) > 1:
-    path_arg = sys.argv[1]
-  else:
-    path_arg = "."
-  path = os.path.abspath(path_arg)
+  view_db()
+  # if len(sys.argv) > 1:
+  #   path_arg = sys.argv[1]
+  # else:
+  #   path_arg = "."
+  # path = os.path.abspath(path_arg)
 
-  check_path(path)
+  # check_path(path)
     
   connection.close()
