@@ -57,6 +57,7 @@ def check_path(path):
 
 def view_db():
   all_items_res = db.execute("SELECT * FROM files").fetchall()
+  print("All Files")
   for file_name, hash, file_path in all_items_res:
     print(f"{hash} | {file_name}")
 
