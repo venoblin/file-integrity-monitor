@@ -62,8 +62,9 @@ def view_db():
     print(f"{hash} | {file_name}")
 
 if __name__ == '__main__':
-  if sys.argv[1] == '--view-db':
-    view_db()
+  match sys.argv[1]:
+    case '--view-db':
+      view_db()
   
   # if len(sys.argv) > 1:
   # else:
