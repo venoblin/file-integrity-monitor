@@ -64,7 +64,7 @@ def view_db():
 if __name__ == '__main__':
   if len(sys.argv) >= 2:
     match sys.argv[1]:
-      case '--view-db':
+      case '-d':
         view_db()
   
   # if len(sys.argv) > 1:
