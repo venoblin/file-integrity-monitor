@@ -66,6 +66,11 @@ if __name__ == '__main__':
     match sys.argv[1]:
       case '-d':
         view_db()
+      case '-s':
+        if len(sys.argv) >= 3:
+          check_path(sys.argv[2])
+        else:
+          print("Error: Path needed.")
   
   # if len(sys.argv) > 1:
   # else:
