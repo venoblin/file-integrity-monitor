@@ -85,7 +85,7 @@ def run_check():
     
   match sys.argv[1]:
     case '--help':
-      print()
+      print_banner()
     case '-d':
       view_db()
     case '-s':
