@@ -16,10 +16,10 @@ def check_path(path):
     print(f"Error: Directory '{path}' not found.")
     return
   
-  files = os.listdir(path)
+  items = os.listdir(path)
   modified_files = []
   
-  for f in files:
+  for f in items:
     if not os.path.isdir(f"{path}/{f}"):
       output = subprocess.run(["sha256sum", f"{path}/{f}"], capture_output=True, text=True).stdout
       raw_hash = output[:64]
