@@ -31,6 +31,8 @@ This project was built with the following technologies:
 
 ## Usage
 
+- Scan directory
+
 ```sh
 python3 fic.py --scan /path/to/check
 ```
