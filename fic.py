@@ -47,7 +47,7 @@ def check_path(path):
     for f in modified_files:
       print(f"File modified: {f["hash"]} -> {f["raw_hash"]} | {f["file_name"]}")
     
-    baseline_input = input("Wish to create new baseline? (Y, n) ")
+    baseline_input = input("Wish to create new baseline? (Y, n)")
     match baseline_input.lower().replace(" ", ""):
       case "n":
         return
